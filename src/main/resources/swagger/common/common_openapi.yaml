@@ -1,0 +1,37 @@
+openapi: 3.0.1
+info:
+  title: title
+  version: 0.0.1
+tags:
+  - name: Example API operation
+    description: basic example
+paths:
+  /example-path/xyz:
+    get:
+      tags:
+        - Example API operation
+      summary: common objects usage example
+      operationId: exampleOperationId
+      parameters:
+        - $ref: '#/components/parameters/HeaderAcceptLang'
+      responses:
+        "200":
+          description: Successful call
+          content:
+            application/json:
+              schema:
+                type: string
+        "404":
+          $ref: '#/components/responses/ErrorResponse404'
+components:
+  parameters:
+    HeaderAcceptLang:
+      name: Accept-Language
+      in: header
+      schema:
+        type: string
+        default: en-US
+
+  responses:
+    ErrorResponse404:
+      description: Not found

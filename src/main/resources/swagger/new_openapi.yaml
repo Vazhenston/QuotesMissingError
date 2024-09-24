@@ -1,0 +1,26 @@
+openapi: 3.0.1
+info:
+  title: Example project
+  version: 0.0.1
+servers:
+- url: http://localhost:8080/api
+  description: localhost
+paths:
+  /example/api/hello:
+    get:
+      tags:
+      - Hello API
+      operationId: hello
+      parameters:
+      - $ref: ./common/common_openapi.yaml#/components/parameters/HeaderAcceptLang
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseObject"
+components:
+  schemas:
+    ResponseObject:
+      type: object
